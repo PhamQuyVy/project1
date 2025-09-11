@@ -1,7 +1,6 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class Bank 
@@ -53,7 +52,7 @@ public class Bank
                  
                 if (interestAmount != 0) {
                     transactions.add(new Transaction(
-                        acc.getAccountNumber(),"INTEREST",interestAmount,"Áp dụng lãi hàng tháng"));
+                        acc.getAccountNumber(),"INTEREST",interestAmount,"Ap dung lai hang thang "));
         }
     }
 }
@@ -119,19 +118,18 @@ public class Bank
             System.out.println("Tai khoan co so du cao nhat: " + caonhat);
             System.out.println("Tai khoan co so du thap nhat: " + thapnhat);
     }
-    public void sapxep(boolean tangdan)
-    {
-        List<BankAccount> sortedAccounts =new ArrayList<>(accounts);
-        Collections.sort(sortedAccounts, new Comparator<BankAccount>() {
-        @Override
-        public int compare(BankAccount a1, BankAccount a2) {
-            if (tangdan) {
-                return Double.compare(a1.getBalance(), a2.getBalance());
-            } else {
-                return Double.compare(a2.getBalance(), a1.getBalance());
-            }
+     public void sapxep(boolean tangdan) {
+        List<BankAccount> sortedAccounts = new ArrayList<>(accounts);
+
+        if (tangdan) {
+            Collections.sort(sortedAccounts); 
+        } else {
+            Collections.sort(sortedAccounts, Collections.reverseOrder()); 
         }
-    });
+
+        for (BankAccount acc : sortedAccounts) {
+            System.out.println(acc);
+        }
         for (BankAccount acc : sortedAccounts) {
         System.out.println(acc);
     }

@@ -1,5 +1,5 @@
 import java.time.LocalDateTime;
-public  abstract class BankAccount 
+public  abstract class BankAccount implements Comparable<BankAccount>
 {
     protected String AccountNumber;
     protected String OwnerName;
@@ -39,6 +39,9 @@ public  abstract class BankAccount
     public String toString() {
         return "So tai khoan: " + AccountNumber + ", Chu tai khoan: " + OwnerName + ", So du: " + Balance;
     }
-
-
+   @Override
+    public int compareTo(BankAccount other)
+     {
+        return Double.compare(this.Balance, other.Balance);
+    }
 }
